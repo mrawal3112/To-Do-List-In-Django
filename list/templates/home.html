@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>To-Do List Project</title>
+    <style>
+        #update{text-decoration:none;padding:5px;color:white;background-color:green;}
+        #delete{text-decoration:none;padding:5px;color:white;background-color:red;}
+        .box{padding-top:10px;padding-left:10px;margin-bottom:20px;margin-bottom:20px;height:30px;
+        box-shadow: 2px 1px 4px 1px #b3b3b3;}
+        .container{width:550px;height:auto;padding-bottom:20px;margin:auto;padding=auto;background-color:#f0ffff;}
+        input{width:100%;height:40px;box-shadow: 2px 1px 4px 1px #b3b3b3;}
+        span{font-size:larger;margin-left:15px;}
+        strike{color:red;font-size:larger;margin-left:15px;}
+        h1{text-align:center;}
+        body{font-family:Arial, Helvetica, sans-serif;}
+    </style>
+</head>
+<body>
+<div class="container"><br>
+    <h1>To-Do List</h1>
+<form method="POST" action="/">
+    {% csrf_token %}
+    {{form.Activity}}
+</form>
+<input type="submit" name="adddata"><br><br>
+    {% for task in tasks %}
+    <div class="box">
+        <a href="{% url 'update' task.id %}" id="update">Update</a>&nbsp;
+        <a href="{% url 'delete' task.id %}" id="delete">Delete</a>
+        {% if task.Done == True %}
+        <strike>{{task}}</strike>
+        {% else %}
+        <span>{{task}}</span>
+        {% endif %}
+    </div>
+{% endfor %}
+</div>
+
+
+
+</body>
+</html>

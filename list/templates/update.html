@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update-ListItem</title>
+    <style>
+        .container{width:550px;height:auto;margin:auto;padding=auto;background-color:#f0ffff;}
+        input{margin:10px 0px;}
+        body{font-family:Arial, Helvetica, sans-serif;}
+    </style>
+</head>
+<body>
+<div class="container">
+<form method="POST" action="">
+    {% csrf_token %}
+    {{form.as_p}}
+</form>
+<input type="submit" name="updatedata">
+</div>
+</body>
+</html>
